@@ -28,16 +28,15 @@ right_justify("extravagant")
 # Implementing do_twice, print_twice, do_four, and do_n_times functions
 
 
-def do_twice(func, arg):
+def do_twice(func):
     """
     Calls the given function twice with the specified argument.
 
     Args:
         func: Function object to be called.
-        arg: Argument to be passed to the function.
     """
-    func(arg)
-    func(arg)
+    func()
+    func()
 
 
 def print_twice(s):
@@ -49,10 +48,6 @@ def print_twice(s):
     """
     print(s)
     print(s)
-
-
-# Test the do_twice function
-do_twice(print_twice, "spam")
 
 
 # Modified do_twice function to take a value and call the function twice with the value
@@ -73,24 +68,35 @@ do_twice_with_value(print_twice, "spam")
 
 
 # Define do_four function to call a function four times with a value
-def do_four(func, arg):
+def do_four(func):
     """
     Calls the given function four times with the specified argument.
 
     Args:
         func: Function object to be called.
-        arg: Argument to be passed to the function.
     """
-    do_twice(func, arg)
-    do_twice(func, arg)
+    do_twice(func)
+    do_twice(func)
 
 
-# Test the do_four function
-do_four(print_twice, "spam")
+# Define do_four function to call a function four times with a value
+def do_four_with_value(func, arg):
+    """
+    Calls the given function four times with the specified argument.
+
+    Args:
+        func: Function object to be called.
+    """
+    do_twice_with_value(func, arg)
+    do_twice_with_value(func, arg)
+
+
+# Test the modified do_four_with_value function
+do_four_with_value(print_twice, "spam")
 
 
 # Define do_n_times function to call a function n times with a value
-def do_n_times(func, arg, n):
+def do_n_times(func, n, arg):
     """
     Calls the given function n times with the specified argument.
 
@@ -104,4 +110,51 @@ def do_n_times(func, arg, n):
 
 
 # Test the do_n_times function
-do_n_times(print_twice, "spam", 7)
+do_n_times(print_twice, 7, "spam")
+
+
+### Exercise 3.2. ###
+
+
+def print_beam():
+    print("+ - - - -", end=" ")  # Print a horizontal beam of the grid
+
+
+def print_post():
+    print("|        ", end=" ")  # Print a vertical post of the grid
+
+
+def print_beams():
+    """
+    Prints the top and bottom beams of a row in the grid.
+    """
+    do_twice(print_beam)  # Print two horizontal beams
+    print("+")  # Print the closing plus sign of the row
+
+
+def print_posts():
+    """
+    Prints the vertical posts of a row in the grid.
+    """
+    do_twice(print_post)  # Print two vertical posts
+    print("|")  # Print the closing vertical post of the row
+
+
+def print_row():
+    """
+    Prints a single row of the grid.
+    """
+    print_beams()  # Print the top and bottom beams of the row
+    do_four(print_posts)  # Print four vertical posts of the row
+
+
+def print_grid():
+    """
+    Prints a 2x2 grid using rows and columns.
+    """
+    do_twice(print_row)  # Print two rows of the grid
+    print_beams()  # Print the final bottom beams to complete the grid
+
+
+# Test the print_grid function to see the grid output
+print_grid()
