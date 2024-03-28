@@ -38,3 +38,29 @@ print(c(x, y + 3, x + y))
 # 1. Inside 'c': total = 1 + (2+3) + (1+2) = 9
 # 2. Inside 'b': a(9, 9) = 10 * 9 = 90, prints "9 90", returns 90
 # 3. Inside 'c': 90 ** 2 = 8100, which is printed as the final output
+
+### Exercise 6.2. ###
+
+# Ackermann function implementation and evaluation.
+
+
+def ack(m, n):
+    """Compute the Ackermann function A(m, n)."""
+    # Base case: if m = 0, return n + 1
+    if m == 0:
+        return n + 1
+    # Recursive case: if n = 0, call ack(m-1, 1)
+    elif n == 0:
+        return ack(m - 1, 1)
+    # Recursive case: use ack(m-1, ack(m, n-1))
+    else:
+        return ack(m - 1, ack(m, n - 1))
+
+
+# Evaluate ack(3, 4) as an example
+print("Ackermann(3, 4) =", ack(3, 4))
+
+# What happens for larger values of m and n?
+# Note: The Ackermann function grows extremely fast, leading to stack overflow errors for large inputs.
+# Uncomment the below line to see this behavior (caution: may cause stack overflow).
+# print("Ackermann(3, 7) =", ack(3, 7))
