@@ -75,3 +75,44 @@ check_fermat(3, 4, 5, 6)  # Testing the function with predefined values
 # Prompting user for input and checking Fermat's Last Theorem
 # The star operator (*) unpacks the tuple returned by get_fermat_inputs()
 check_fermat(*(get_fermat_inputs()))
+
+### Exercise 5.3. ###
+
+# Define a function is_triangle that checks if three lengths can form a triangle
+def is_triangle(a, b, c):
+    """
+    Check if three lengths can form a triangle.
+
+    Args:
+        a (int): Length of side a.
+        b (int): Length of side b.
+        c (int): Length of side c.
+
+    Returns:
+        bool: True if a triangle can be formed, False otherwise.
+    """
+    return c <= a + b
+
+# Test is_triangle with example lengths
+print("Example test:")
+print("Is triangle possible?", "Yes" if is_triangle(4, 2, 1) else "No")
+
+# Define a function check_triangle to prompt user input and check if a triangle can be formed
+def check_triangle():
+    """
+    Prompt user for input and check if a triangle can be formed.
+    """
+    try:
+        # Prompt user for input and convert to integers
+        a = int(input("Enter the length for side a: "))
+        b = int(input("Enter the length for side b: "))
+        c = int(input("Enter the length for side c: "))
+        # Call is_triangle to check if a triangle can be formed
+        print("Is triangle possible?", "Yes" if is_triangle(a, b, c) else "No")
+    except ValueError:
+        print("Please enter valid integers for side lengths.")
+
+# Call check_triangle to run the input and check process
+print("\nUser input test:")
+check_triangle()
+
