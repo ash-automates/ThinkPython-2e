@@ -1,0 +1,39 @@
+Stack Diagram:
+
+  recurse(3, 0)              # Initial call
+      |
+      |-> recurse(2, 3)      # Add 3 to accumulator s
+             |
+             |-> recurse(1, 5)  # Add 2 to accumulator s
+                    |
+                    |-> recurse(0, 6)  # Add 1 to accumulator s
+
+---
+
+Docstring for recurse(n, s):
+
+"""
+This function performs a summation operation recursively from 1 up to 'n'
+and prints the final result.
+Parameters:
+- n (int): The integer representing the current recursion level and the
+upper limit for summation.
+- s (int): The accumulator value that gets updated during each recursion
+by adding the current value of 'n'.
+
+Usage:
+To use this function, call recurse(n, s) with appropriate integer values
+for 'n' and 's'.
+Ensure that 'n' is a non-negative integer for proper functioning.
+Example:
+recurse(3, 0)  # This will perform the summation 1 + 2 + 3 and print the
+result 6.
+"""
+
+Answer to "1. What would happen if you called this function like this:
+recurse(-1, 0)?":
+Calling recurse(-1, 0) would immediately print the initial value of the
+accumulator 's', which is 0. Since 'n' is negative, the base case of the
+recursion (n == 0) is not met, and the function will not enter the
+recursive calls. Therefore, the output would be 0 without any further
+recursion.
