@@ -64,3 +64,47 @@ print("Ackermann(3, 4) =", ack(3, 4))
 # Note: The Ackermann function grows extremely fast, leading to stack overflow errors for large inputs.
 # Uncomment the below line to see this behavior (caution: may cause stack overflow).
 # print("Ackermann(3, 7) =", ack(3, 7))
+
+
+### Exercise 6.3. ###
+
+def first(word):
+    """Returns the first character of a string."""
+    return word[0]
+
+
+def last(word):
+    """Returns the last character of a string."""
+    return word[-1]
+
+
+def middle(word):
+    """Returns all but the first and last characters of a string."""
+    return word[1:-1]
+
+
+def is_palindrome(word):
+    """
+    Checks if a word is a palindrome recursively.
+
+    Args:
+    - word (str): The word to check.
+
+    Returns:
+    - bool: True if the word is a palindrome, False otherwise.
+    """
+    if len(word) <= 1:  # Base case: empty string or single character is a palindrome
+        return True
+    if first(word) != last(word):  # If first and last characters are not equal, not a palindrome
+        return False
+    return is_palindrome(middle(word))  # Recursive call to check the middle part
+
+
+# Testing the functions
+print(is_palindrome('noon'))  # True
+print(is_palindrome('redivider'))  # True
+print(is_palindrome('hello'))  # False
+
+# Additional testing
+print(is_palindrome('a'))  # True (single character is a palindrome)
+print(is_palindrome(''))  # True (empty string is a palindrome)
