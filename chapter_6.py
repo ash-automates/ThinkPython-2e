@@ -108,3 +108,28 @@ print(is_palindrome('hello'))  # False
 # Additional testing
 print(is_palindrome('a'))  # True (single character is a palindrome)
 print(is_palindrome(''))  # True (empty string is a palindrome)
+
+### Exercise 6.4. ###
+
+def is_power(a, b):
+    """
+    Checks if a is a power of b using recursion.
+
+    Args:
+    - a (int): The number to check.
+    - b (int): The base.
+
+    Returns:
+    - bool: True if a is a power of b, False otherwise.
+    """
+    if a == b:  # Base case: a is already equal to b, hence a is a power of b
+        return True
+    elif a % b == 0 and a != 0:  # Check if a is divisible by b and not zero
+        return is_power(a / b, b)  # Recursively check if a/b is a power of b
+    else:
+        return False
+
+# Test cases
+print(is_power(256, 2))  # True (256 is 2^8)
+print(is_power(1024, 2))  # True (1024 is 2^10)
+
