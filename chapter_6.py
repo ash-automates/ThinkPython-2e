@@ -133,3 +133,26 @@ def is_power(a, b):
 print(is_power(256, 2))  # True (256 is 2^8)
 print(is_power(1024, 2))  # True (1024 is 2^10)
 
+### Exercise 6.5. ###
+
+def gcd(a, b):
+    """
+    Finds the greatest common divisor (GCD) of two numbers using recursion.
+
+    Args:
+    - a (int): First number.
+    - b (int): Second number.
+
+    Returns:
+    - int: The GCD of a and b.
+    """
+    if b == 0:  # Base case: If b is 0, GCD is a
+        return a
+    else:
+        return gcd(b, a % b)  # Recursively call gcd with b and the remainder of a/b
+
+# Test cases
+print(gcd(10, 45))  # Expected output: 5
+print(gcd(1701, 3768))  # Expected output: 3
+print(gcd(60, 48))  # Expected output: 12
+print(gcd(81, 27))  # Expected output: 27
